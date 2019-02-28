@@ -98,8 +98,8 @@ void processConstStr(DAST* dast, char* startLabel, char* endLabel) {
 void processExprBinaryAdd(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
 
     dispatch(child1, startLabel, endLabel);
 
@@ -116,8 +116,8 @@ void processExprBinaryAdd(DAST* dast,
 void processExprBinarySub(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
@@ -134,8 +134,8 @@ void processExprBinarySub(DAST* dast,
 void processExprBinaryMul(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
@@ -152,8 +152,8 @@ void processExprBinaryMul(DAST* dast,
 void processExprBinaryDiv(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
@@ -170,8 +170,8 @@ void processExprBinaryDiv(DAST* dast,
 void processExprBinaryEq(DAST* dast,
                          char* startLabel,
                          char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
@@ -188,8 +188,8 @@ void processExprBinaryEq(DAST* dast,
 void processExprBinaryNotEq(DAST* dast,
                             char* startLabel,
                             char* endLabel) {
-    *DAST child1 = dast->children[0];
-    *DAST child2 = dast->children[1];
+    DAST* child1 = dast->children[0];
+    DAST* child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
