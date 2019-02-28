@@ -98,16 +98,16 @@ void processConstStr(DAST* dast, char* startLabel, char* endLabel) {
 void processExprBinaryAdd(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
 
     dispatch(child1, startLabel, endLabel);
 
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, 0, SP);
 
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitADD(S1, S1, T0);
 
     emitADDI(SP, SP, 4);
@@ -116,16 +116,16 @@ void processExprBinaryAdd(DAST* dast,
 void processExprBinarySub(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitSUB(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
@@ -134,16 +134,16 @@ void processExprBinarySub(DAST* dast,
 void processExprBinaryMul(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, SP(0));
     
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitMUL(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
@@ -152,16 +152,16 @@ void processExprBinaryMul(DAST* dast,
 void processExprBinaryDiv(DAST* dast,
                           char* startLabel,
                           char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitDIV(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
@@ -170,16 +170,16 @@ void processExprBinaryDiv(DAST* dast,
 void processExprBinaryEq(DAST* dast,
                          char* startLabel,
                          char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitXOR(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
@@ -188,16 +188,16 @@ void processExprBinaryEq(DAST* dast,
 void processExprBinaryNotEq(DAST* dast,
                             char* startLabel,
                             char* endLabel) {
-    child1 = dast->children[0];
-    child2 = dast->children[1];
+    *DAST child1 = dast->children[0];
+    *DAST child2 = dast->children[1];
     
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitsw(child1, SP(0));
+    emitSW(child1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
-    emitLW(T0, SP(0));
+    emitLW(T0, 0, SP);
     emitDIV(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
