@@ -104,7 +104,7 @@ void processExprBinaryAdd(DAST* dast,
     dispatch(child1, startLabel, endLabel);
 
     emitADDI(SP, SP, -4);
-    emitSW(child1, 0, SP);
+    emitSW(S1, 0, SP);
 
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
@@ -122,7 +122,7 @@ void processExprBinarySub(DAST* dast,
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitSW(child1, 0, SP);
+    emitSW(S1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
@@ -140,7 +140,7 @@ void processExprBinaryMul(DAST* dast,
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitSW(child1, SP(0));
+    emitSW(S1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
@@ -158,7 +158,7 @@ void processExprBinaryDiv(DAST* dast,
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitSW(child1, 0, SP);
+    emitSW(S1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
@@ -176,7 +176,7 @@ void processExprBinaryEq(DAST* dast,
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitSW(child1, 0, SP);
+    emitSW(S1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
@@ -194,7 +194,7 @@ void processExprBinaryNotEq(DAST* dast,
     dispatch(child1, startLabel, endLabel);
     
     emitADDI(SP, SP, -4);
-    emitSW(child1, 0, SP);
+    emitSW(S1, 0, SP);
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
