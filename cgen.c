@@ -506,6 +506,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLABEL (total_string);
     free (total_string);
     
+    emitLW(FP, 48, SP);
     emitLW(RA, 44, SP);
     emitLW (S11, 40, SP);
     emitLW (S10, 36, SP);
@@ -519,11 +520,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW (S2, 4, SP);
     emitLW (S1, 0, SP);
     
-    emitADDI(SP, SP, 48);
-      
-    emitLW(FP, 0, SP);
-      
-    emitADDI(SP, SP, 4);
+    emitADDI(SP, SP, 52);
       
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
