@@ -486,17 +486,17 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       
     emitADDI (SP, SP, -44);
       
-    emitSW (S1, 4, SP);
-    emitSW (S2, 8, SP);
-    emitSW (S3, 12, SP);
-    emitSW (S4, 16, SP);
-    emitSW (S5, 20, SP);
-    emitSW (S6, 24, SP);
-    emitSW (S7, 28, SP);
-    emitSW (S8, 32, SP);
-    emitSW (S9, 36, SP);
-    emitSW (S10, 40, SP);
-    emitSW (S11, 44, SP);
+    emitSW (S1, 0, SP);
+    emitSW (S2, 4, SP);
+    emitSW (S3, 8, SP);
+    emitSW (S4, 12, SP);
+    emitSW (S5, 16, SP);
+    emitSW (S6, 20, SP);
+    emitSW (S7, 24, SP);
+    emitSW (S8, 28, SP);
+    emitSW (S9, 32, SP);
+    emitSW (S10, 36, SP);
+    emitSW (S11, 40, SP);
       
     dispatch(func_body, startLabel, endLabel);
       
@@ -505,17 +505,17 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLABEL (total_string);
     free (total_string);
     
-    emitLW (S11, 44, SP);
-    emitLW (S10, 40, SP);
-    emitLW (S9, 36, SP);
-    emitLW (S8, 32, SP);
-    emitLW (S7, 28, SP);
-    emitLW (S6, 24, SP);
-    emitLW (S5, 20, SP);
-    emitLW (S4, 16, SP);
-    emitLW (S3, 12, SP);
-    emitLW (S2, 8, SP);
-    emitLW (S1, 4, SP);
+    emitLW (S11, 40, SP);
+    emitLW (S10, 36, SP);
+    emitLW (S9, 32, SP);
+    emitLW (S8, 28, SP);
+    emitLW (S7, 24, SP);
+    emitLW (S6, 20, SP);
+    emitLW (S5, 16, SP);
+    emitLW (S4, 12, SP);
+    emitLW (S3, 8, SP);
+    emitLW (S2, 4, SP);
+    emitLW (S1, 0, SP);
     
     emitADDI(SP, SP, 44);
       
