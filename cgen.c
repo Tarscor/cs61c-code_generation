@@ -218,7 +218,7 @@ void processExprBinaryGTEq(DAST* dast,
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
     emitSLT(S1, T0, S1);
-    emitXOR(S1, S1, 1);
+    emitXORI(S1, S1, 1);
     
     emitADDI(SP, SP, 4);
 }
