@@ -549,15 +549,15 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
 //    emitSW(A2, 24, SP);
 //    emitSW(A1, 28, SP);
 //    emitSW(A0, 32, SP);
-    DAST* func_id = dast->children[1];
-    
-    for (i = dast->children[1]->size - 1, i < 0, i--) {
-        dispatch(dast->children[1][i], startLabel, endLabel);
-    }
-    
-    emitJAL(RA, func_id->data.identifier);
-    
-    emitMV(S1, A0);
+//    DAST* func_id = dast->children[1];
+//    
+//    for (i = dast->children[1]->size - 1, i < 0, i--) {
+//        dispatch(dast->children[1][i], startLabel, endLabel);
+//    }
+//    
+//    emitJAL(RA, func_id->data.identifier);
+//    
+//    emitMV(S1, A0);
     
 //    emitLW(A0, 32, SP);
 //    emitLW(A1, 28, SP);
