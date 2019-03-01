@@ -296,9 +296,9 @@ void processExprBinaryLogicAnd(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
-    emitXOR(T1, T0, 0);
-    emitXOR(S1, S1, 0);
-    emitAND(S1, T1, S1);
+    emitSNEZ(T0, T0);
+    emitSNEZ(S1, S1);
+    emitAND(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
 }
@@ -316,9 +316,9 @@ void processExprBinaryLogicOr(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
-    emitXOR(T1, T0, 0);
-    emitXOR(S1, S1, 0);
-    emitOR(S1, T1, S1);
+    emitSNEZ(T0, T0);
+    emitSNEZ(S1, S1);
+    emitOR(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
 }
@@ -484,7 +484,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSW (FP, 0, SP);
     emitMV(FP, SP);
       
-    emitADDI (SP, SP, -52);
+    emitADDI (SP, SP, -48);
       
     emitSW (S1, 0, SP);
     emitSW (S2, 4, SP);
@@ -520,7 +520,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW (S2, 4, SP);
     emitLW (S1, 0, SP);
     
-    emitADDI(SP, SP, 56);
+    emitADDI(SP, SP, 52);
       
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
