@@ -595,11 +595,11 @@ void processIfElse(DAST* dast, char* startLabel, char* endLabel) {
         emitJ(else_case);
     }
     emitLABEL(true_case);
-    dispatch(dast->children[1], true_case, endLabel);
+    dispatch(dast->children[1], true_case, end);
     emitJ(end);
 
     emitLABEL(else_case);
-    dispatch(dast->children[2], else_case, endLabel);
+    dispatch(dast->children[2], else_case, end);
 
     emitLABEL(end);
 }
