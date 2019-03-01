@@ -475,7 +475,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
   if (dast->size == 4) {
     // only cgen on functions with bodies
     DAST* func_id = dast->children[1];
-    DAST* func_body = dast->children[3];
+//    DAST* func_body = dast->children[3];
 
     emitLABEL(func_id->data.identifier);
 //
