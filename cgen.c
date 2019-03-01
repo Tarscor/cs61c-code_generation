@@ -537,9 +537,9 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
   
-    DAST* func_id = dast->children[1];
+    DAST* func_id = dast->children[0];
 
-    for (int i = dast->children[1]->size - 1; i >= 0; i--) {
+    for (int i = (int) (dast->children[1])->size - 1; i >= 0; i--) {
         dispatch((dast->children[1])->children[i], startLabel, endLabel);
         emitADDI(SP, SP, -4);
         emitSW(S1, 0, SP);
