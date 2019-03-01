@@ -550,7 +550,6 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     emitSW(A2, 24, SP);
     emitSW(A1, 28, SP);
     emitSW(A0, 32, SP);
-    DAST* func_id = dast->children[1];
 
     for (i = dast->children[1]->size - 1, i < 0, i--) {
         dispatch((dast->children[1])->children[i], startLabel, endLabel);
