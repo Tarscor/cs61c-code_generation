@@ -181,7 +181,7 @@ void processExprBinaryEq(DAST* dast,
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
     emitXOR(S1, T0, S1);
-    emitXOR(S1, S1, 1);
+    emitXORI(S1, S1, 1);
     
     emitADDI(SP, SP, 4);
 }
@@ -237,7 +237,7 @@ void processExprBinaryGT(DAST* dast,
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
     emitSLT(T1, S1, T0);
-    emitXOR(T1, T1, 1);
+    emitXORI(T1, T1, 1);
     emitXOR(S1, T0, S1);
     emitAND(S1, S1, T1);
     
@@ -259,7 +259,7 @@ void processExprBinaryLTEq(DAST* dast,
     emitLW(T0, 0, SP);
     emitSLT(T1, S1, T0);
     emitXOR(S1, T0, S1);
-    emitXOR(S1, S1, 1);
+    emitXORI(S1, S1, 1);
     emitOR(S1, S1, T1);
     
     emitADDI(SP, SP, 4);
@@ -550,7 +550,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
 
     emitJAL(RA, func_id->data.identifier);
     
-//    emitADDI(SP, SP, ((dast->children[1])->size) * 4);
+    emitADDI(SP, SP, ((dast->children[1])->size) * 4);
 
     emitMV(S1, A0);
 }
