@@ -519,8 +519,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
       
     emitADD(FP, x0, x0);
       
-    emitLW (FP, 0, SP);
-      
     emitADDI(SP, SP, 48);
       
     if (strcmp ("main", func_id->data.identifier) == 0) {
@@ -550,13 +548,13 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
 //    emitSW(A1, 28, SP);
 //    emitSW(A0, 32, SP);
 //    DAST* func_id = dast->children[1];
-//    
+//
 //    for (i = dast->children[1]->size - 1, i < 0, i--) {
 //        dispatch(dast->children[1][i], startLabel, endLabel);
 //    }
-//    
+//
 //    emitJAL(RA, func_id->data.identifier);
-//    
+//
 //    emitMV(S1, A0);
     
 //    emitLW(A0, 32, SP);
