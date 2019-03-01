@@ -582,15 +582,26 @@ void processBlock(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processIfElse(DAST* dast, char* startLabel, char* endLabel) {
+    char* true_case = generateLocalLabel();
+    char* else_case = generateLocalLabel();
+    char* end = generateLocalLabel();
+    
+    dispatch(dast->children[0], startLabel, endLabel));
+    emitBNEZ(S1, true_case);
+    
     if (dast->size < 3) {
-        dispatch(dast->children[1], startLabel, endLabel);
+        emitJ(end);
     } else {
-        
-        dispatch(dast->children[1], startLabel, endLabel);
-        
-        dispatch(dast->children[1], startLabel, endLabel);
-        
+        emitJ(else_case);
     }
+    emitLABEL(true_case);
+    dispatch(dast->children[1], startLabel, endLabel);
+    emitJ(end);
+
+    emitLABEL(else_case);
+    dispatch(dast->children[2], startLabel, endLabel);
+
+    emitLABEL(end);
 }
 
 void processFor(DAST* dast, char* startLabel, char* endLabel) {
