@@ -496,7 +496,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitMV(FP, SP);
     emitADDI(SP, SP, 52);
       
-    dispatch(func_body);
+    dispatch(func_bodym startLabel, endLabel);
       
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
