@@ -514,9 +514,12 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW (S3, 12, SP);
     emitLW (S2, 8, SP);
     emitLW (S1, 4, SP);
+      
+    emitADDI(SP, SP, 40);
+      
     emitLW (FP, 0, SP);
       
-    emitADDI(SP, SP, 44);
+    emitADDI(SP, SP, 4);
       
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
@@ -532,7 +535,8 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
-  /* YOUR CODE HERE */
+  
+    processFuncDecl(dast, startLabel, endLabel);
 }
 
 void processBlock(DAST* dast, char* startLabel, char* endLabel) {
