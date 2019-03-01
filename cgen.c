@@ -242,7 +242,8 @@ void processExprBinaryGT(DAST* dast,
     emitSLT(T1, T0, S1);
     emitXORI(T1, T1, 1);
     
-    emitXOR(S1, T0, S1);
+    emitSUB(S1, T0, S1);
+    emitSNEZ(S1, S1);
     
     emitAND(S1, S1, T1);
     
@@ -265,8 +266,8 @@ void processExprBinaryLTEq(DAST* dast,
     
     emitSLT(T1, T0, S1);
     
-    emitXOR(S1, T0, S1);
-    emitXORI(S1, S1, 1);
+    emitSUB(S1, T0, S1);
+    emitSEQZ(S1, S1);
     
     emitOR(S1, S1, T1);
     
@@ -580,7 +581,7 @@ void processBlock(DAST* dast, char* startLabel, char* endLabel) {
 }
 
 void processIfElse(DAST* dast, char* startLabel, char* endLabel) {
-  /* YOUR CODE HERE */
+  
 }
 
 void processFor(DAST* dast, char* startLabel, char* endLabel) {
