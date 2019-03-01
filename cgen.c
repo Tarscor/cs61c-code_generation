@@ -236,9 +236,12 @@ void processExprBinaryGT(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
+    
     emitSLT(T1, S1, T0);
     emitXORI(T1, T1, 1);
+    
     emitXOR(S1, T0, S1);
+    
     emitAND(S1, S1, T1);
     
     emitADDI(SP, SP, 4);
