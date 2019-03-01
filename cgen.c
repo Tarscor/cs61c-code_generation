@@ -497,7 +497,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitSW (S9, 32, SP);
     emitSW (S10, 36, SP);
     emitSW (S11, 40, SP);
-    emitSW(RA, 44, SP);
+    emitSW (RA, 44, SP);
       
     dispatch(func_body, startLabel, endLabel);
       
@@ -506,7 +506,7 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLABEL (total_string);
     free (total_string);
     
-    emitSW(RA, 44, SP);
+    emitLW(RA, 44, SP);
     emitLW (S11, 40, SP);
     emitLW (S10, 36, SP);
     emitLW (S9, 32, SP);
