@@ -550,7 +550,7 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
 
     emitJAL(RA, func_id->data.identifier);
     
-    emitADDI(SP, SP, ((dast->children[1])->size) * 4);
+//    emitADDI(SP, SP, ((dast->children[1])->size) * 4);
 
     emitMV(S1, A0);
 }
