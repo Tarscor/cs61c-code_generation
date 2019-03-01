@@ -180,7 +180,7 @@ void processExprBinaryEq(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
-    emitXOR(S1, S1, T0);
+    emitSUB(S1, S1, T0);
     emitXOR(S1, S1, 1);
     
     emitADDI(SP, SP, 4);
@@ -199,7 +199,7 @@ void processExprBinaryNotEq(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
-    emitXOR(S1, S1, T0);
+    emitSUB(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
 }
