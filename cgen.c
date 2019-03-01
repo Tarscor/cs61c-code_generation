@@ -538,18 +538,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
 void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
   
     DAST* func_id = dast->children[1];
-    
-    emitADDI(SP, SP, -36);
-
-    emitSW(RA, 0, SP);
-    emitSW(A7, 4, SP);
-    emitSW(A6, 8, SP);
-    emitSW(A5, 12, SP);
-    emitSW(A4, 16, SP);
-    emitSW(A3, 20, SP);
-    emitSW(A2, 24, SP);
-    emitSW(A1, 28, SP);
-    emitSW(A0, 32, SP);
 
     for (i = dast->children[1]->size - 1, i < 0, i--) {
         dispatch((dast->children[1])->children[i], startLabel, endLabel);
@@ -561,18 +549,6 @@ void processExprCall(DAST* dast, char* startLabel, char* endLabel) {
     emitJAL(RA, func_id->data.identifier);
 
     emitMV(S1, A0);
-    
-    emitLW(A0, 32, SP);
-    emitLW(A1, 28, SP);
-    emitLW(A2, 24, SP);
-    emitLW(A3, 20, SP);
-    emitLW(A4, 16, SP);
-    emitLW(A5, 12, SP);
-    emitLW(A6, 8, SP);
-    emitLW(A7, 4, SP);
-    emitLW(RA, 0, SP);
-
-    emitADDI(SP, SP, 36);
 }
 
 void processBlock(DAST* dast, char* startLabel, char* endLabel) {
