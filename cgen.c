@@ -585,18 +585,17 @@ void processIfElse(DAST* dast, char* startLabel, char* endLabel) {
     char* true_case = generateLocalLabel();
     char* end = generateLocalLabel();
     
-    dispatch(dast->children[0], startLabel, end);
+    dispatch(dast->children[0], startLabel, endLabel);
     emitBNEZ(S1, true_case);
     
     if (dast->size < 3) {
         emitJ(end);
     } else {
-        dispatch(dast->children[2], else_case, end);
+        dispatch(dast->children[2], startLabel, endLabel);
     }
     emitLABEL(true_case);
-    dispatch(dast->children[1], true_case, end);
-    emitJ(end);
-
+    dispatch(dast->children[1], startLabel, endLabel);
+    
     emitLABEL(end);
 }
 
