@@ -260,7 +260,7 @@ void processExprBinaryLTEq(DAST* dast,
     emitSLT(T1, S1, T0);
     emitXOR(S1, T0, S1);
     emitXOR(S1, S1, 1);
-    emitAND(S1, S1, T1);
+    emitOR(S1, S1, T1);
     
     emitADDI(SP, SP, 4);
 }
