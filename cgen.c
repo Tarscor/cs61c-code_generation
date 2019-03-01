@@ -522,8 +522,6 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     emitLW (S3, 8, SP);
     emitLW (S2, 4, SP);
     emitLW (S1, 0, SP);
-      
-      emitLW(FP, 4, SP);
     
     emitADDI(SP, SP, 52);
       
