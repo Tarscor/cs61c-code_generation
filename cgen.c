@@ -372,7 +372,7 @@ void processExprBinaryBitXor(DAST* dast,
     
     dispatch(child2, startLabel, endLabel);
     emitLW(T0, 0, SP);
-    emitXOR(S1, T0, S1);
+    emitXOR(S1, S1, T0);
     
     emitADDI(SP, SP, 4);
 }
@@ -478,50 +478,50 @@ void processFuncDecl(DAST* dast, char* startLabel, char* endLabel) {
     DAST* func_body = dast->children[3];
 
     emitLABEL(func_id->data.identifier);
-      
-    emitADDI(SP, SP, -4);
-
-    emitSW (FP, 0, SP);
-    emitMV(FP, SP);
-      
-    emitADDI (SP, SP, -48);
-      
-    emitSW (S1, 0, SP);
-    emitSW (S2, 4, SP);
-    emitSW (S3, 8, SP);
-    emitSW (S4, 12, SP);
-    emitSW (S5, 16, SP);
-    emitSW (S6, 20, SP);
-    emitSW (S7, 24, SP);
-    emitSW (S8, 28, SP);
-    emitSW (S9, 32, SP);
-    emitSW (S10, 36, SP);
-    emitSW (S11, 40, SP);
-    emitSW (RA, 44, SP);
-      
-    dispatch(func_body, startLabel, endLabel);
-      
+//
+//    emitADDI(SP, SP, -4);
+//
+//    emitSW (FP, 0, SP);
+//    emitMV(FP, SP);
+//
+//    emitADDI (SP, SP, -48);
+//
+//    emitSW (S1, 0, SP);
+//    emitSW (S2, 4, SP);
+//    emitSW (S3, 8, SP);
+//    emitSW (S4, 12, SP);
+//    emitSW (S5, 16, SP);
+//    emitSW (S6, 20, SP);
+//    emitSW (S7, 24, SP);
+//    emitSW (S8, 28, SP);
+//    emitSW (S9, 32, SP);
+//    emitSW (S10, 36, SP);
+//    emitSW (S11, 40, SP);
+//    emitSW (RA, 44, SP);
+//
+//    dispatch(func_body, startLabel, endLabel);
+//
     // produce a label for return statements to come back to
     char *total_string = generateFunctionEndLabel (func_id->data.identifier);
     emitLABEL (total_string);
     free (total_string);
-    
-    emitLW(FP, 48, SP);
-    emitLW(RA, 44, SP);
-    emitLW (S11, 40, SP);
-    emitLW (S10, 36, SP);
-    emitLW (S9, 32, SP);
-    emitLW (S8, 28, SP);
-    emitLW (S7, 24, SP);
-    emitLW (S6, 20, SP);
-    emitLW (S5, 16, SP);
-    emitLW (S4, 12, SP);
-    emitLW (S3, 8, SP);
-    emitLW (S2, 4, SP);
-    emitLW (S1, 0, SP);
-    
-    emitADDI(SP, SP, 52);
-      
+//
+//    emitLW(FP, 48, SP);
+//    emitLW(RA, 44, SP);
+//    emitLW (S11, 40, SP);
+//    emitLW (S10, 36, SP);
+//    emitLW (S9, 32, SP);
+//    emitLW (S8, 28, SP);
+//    emitLW (S7, 24, SP);
+//    emitLW (S6, 20, SP);
+//    emitLW (S5, 16, SP);
+//    emitLW (S4, 12, SP);
+//    emitLW (S3, 8, SP);
+//    emitLW (S2, 4, SP);
+//    emitLW (S1, 0, SP);
+//
+//    emitADDI(SP, SP, 52);
+//
     if (strcmp ("main", func_id->data.identifier) == 0) {
       // If we are the main function we want to exit to
       // be compatible with venus.
